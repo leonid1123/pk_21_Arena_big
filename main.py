@@ -5,6 +5,15 @@ from player import Player
 from db_handler import DB_handler
 
 my_db = DB_handler()
+inp = input('Добавить оружие? (Д)а')
+if inp == 'Д':
+    my_db.add_weapon()
+    my_db.get_weapon()
+inp = input('Добавить броню? (Д)а')
+if inp == 'Д':
+    my_db.add_armour()
+    my_db.get_armour()
+
 player = Player(1,1,1,None)
 os.system('cls')
 print('Добро пожаловать в игру КРОВАВАЯ АРЕНА СТРАШНОЙ СМЕРТИ')
