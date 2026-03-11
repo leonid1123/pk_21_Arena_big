@@ -8,3 +8,4 @@ class Player:
 
     def show_info(self):
         info = f'СИЛА: {self.str}, ЛОВКОСТЬ: {self.agi}, ЗДОРОВЬЕ: {self.hp}, ОРУЖИЕ: {self.weapon}, БРОНЯ: {self.armor}'
+        print(info)
