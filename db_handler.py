@@ -33,7 +33,7 @@ class DB_handler:
             print(item)
 
     def add_weapon(self):
-        sql = 'INSERT INTO Weapon(Name, Base_dmg, Class) VALUES(?,?,?)'
+        sql = 'INSERT INTO Weapon(Name, Base_dmg, Type) VALUES(?,?,?)'
         new_values = (
             ('Деревянный меч', 1, "sword"),
             ('Железный меч', 10, "sword"),
