@@ -1,18 +1,13 @@
-import sqlite3
 import os
 
 from player import Player
 from db_handler import DB_handler
 
 my_db = DB_handler()
-inp = input('Добавить оружие? (Д)а')
-if inp == 'Д':
-    my_db.add_weapon()
-    my_db.get_weapon()
-inp = input('Добавить броню? (Д)а')
-if inp == 'Д':
-    my_db.add_armour()
-    my_db.get_armour()
+print('Для отладки')
+print('Содержимое БД')
+my_db.get_armour()
+my_db.get_weapon()
 
 player = Player(1,1,1,None)
 os.system('cls')
@@ -39,9 +34,12 @@ char_selected = None
 while char_selected not in ["1", "2", "3"]:
     char_selected = input('Какое оружие возьмет герой? 1-МЕЧ, 2-КОПЬЁ или 3-ТОПОР')
 if char_selected == '1':
-    player.weapon = 'МЕЧ'
+    id = my_db.get_selected_weapon_type('sword')
+    player.weapon = id
 if char_selected == '2':
-    player.weapon = 'КОПЬЁ'
+    id = my_db.get_selected_weapon_type('spear')
+    player.weapon = id
 if char_selected == '3':
-    player.weapon = 'ТОПОР'
+    id = my_db.get_selected_weapon_type('axe')
+    player.weapon = id
 player.show_info()
