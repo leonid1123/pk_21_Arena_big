@@ -9,7 +9,7 @@ print('Содержимое БД')
 my_db.get_armour()
 my_db.get_weapon()
 
-player = Player(1,1,1,None)
+player = Player(1,1,1)
 os.system('cls')
 print('Добро пожаловать в игру КРОВАВАЯ АРЕНА СТРАШНОЙ СМЕРТИ')
 print('В начале все характеристики равны 1 и у героя есть КОЖАНАЯ броня.')
@@ -28,7 +28,7 @@ while start_pts > 0:
     if char_selected == '3':
         player.hp = player.hp + 1
     start_pts -= 1
-    player.show_info()
+    player.show_info(my_db)
 
 char_selected = None
 while char_selected not in ["1", "2", "3"]:
@@ -42,4 +42,6 @@ if char_selected == '2':
 if char_selected == '3':
     id = my_db.get_selected_weapon_type('axe')
     player.weapon = id
-player.show_info()
+
+player.armor = my_db.get_selected_armour()
+player.show_info(my_db)

@@ -55,17 +55,31 @@ class DB_handler:
         self.cur.executemany(sql, new_values)
         self.conn.commit()
 
-    def get_selected_type(self, _type):
+    def get_selected_weapon_type(self, _type):
         sql = 'SELECT Id FROM Weapon WHERE Type=? ORDER BY Base_dmg ASC'
         self.cur.execute(sql, (_type,))
         ans = self.cur.fetchone()
         selected_weapon_id = ans[0]
         return selected_weapon_id
 
-    def get_selected_type(self):
+    def get_selected_armour(self):
         sql = 'SELECT Id FROM Armour ORDER BY Dmg_dec ASC'
         self.cur.execute(sql)
         ans = self.cur.fetchone()
-        selected_weapon_id = ans[0]
-        return selected_weapon_id
+        selected_armour_id = ans[0]
+        return selected_armour_id
+
+    def get_weapon_by_id(self,_id):
+        sql = '''SELECT Name, Base_dmg FROM Weapon
+        WHERE Id=?'''
+        self.cur.execute(sql, (_id,))
+        ans = self.cur.fetchone()
+        return ans
+
+    def get_armor_by_id(self,_id):
+        sql = '''SELECT Name, Dmg_dec FROM Armour
+        WHERE Id=?'''
+        self.cur.execute(sql,(_id,))
+        ans = self.cur.fetchone()
+        return ans
 
